@@ -15,6 +15,10 @@ synopsis:               Limit operations for converging sequences
 description:            Limit operations for converging sequences.  This is
                         fairly simple right now.
 
+tested-with:            GHC == 6.8.3,
+                        GHC == 6.10.4,
+                        GHC == 6.12.1, GHC == 6.12.3
+
 source-repository head
   type: darcs
   location: http://code.haskell.org/~mokus/converge
