@@ -10,7 +10,7 @@ maintainer:             James Cook <mokus@deepbondi.net>
 license:                PublicDomain
 homepage:               /dev/null
 
-category:               Math
+category:               Math, Numerical
 synopsis:               Limit operations for converging sequences
 description:            Limit operations for converging sequences.  This is
                         fairly simple right now.
