@@ -10,9 +10,10 @@ import Data.Monoid
 -- pair is returned) .  If the list ends before a match is found, 
 -- returns the last element of the list.
 converge :: Eq a => [a] -> a
-converge = fromMaybe empty . convergeBy eq Just
+converge [] = error "converge: empty list"
+converge xs = fromMaybe empty (convergeBy eq Just xs)
     where
-        empty = error "converge: empty list"
+        empty = error "converge: programming error in converge implementation"
         
         eq (a:b:_)
             | a == b        = Just b
@@ -32,9 +33,10 @@ converge = fromMaybe empty . convergeBy eq Just
 -- > phi :: Rational
 -- > phi = convergeTo 1e-100 0 (iterate (\x -> (x*x + 1) / (2*x-1)) 1)
 convergeTo :: (Fractional a, Ord a) => a -> a -> [a] -> a
-convergeTo absEps relEps = fromMaybe empty . convergeBy eq Just
+convergeTo absEps relEps [] = error "convergeTo: empty list"
+convergeTo absEps relEps xs = fromMaybe empty (convergeBy eq Just xs)
     where
-        empty = error "convergeTo: empty list"
+        empty = error "convergeTo: programming error in convergeTo implementation"
         eq (a:b:_)
             | b /= b                            = Just a
             | absDiff <= abs absEps             = Just b
